@@ -1,0 +1,40 @@
+indexing-settings:
+  sites:                            # список индексируемых сайтов
+    - url:  http://www.playback.ru  # ссылка на индексируемый сайт (без косой черты в конце)
+      name: PlayBack.ru             # имя сайта (любой текст)
+    - url:  https://volochek.life
+      name: Вышний Волочёк
+    - url:  https://www.lenta.ru
+      name: Лента.ру
+    - url:  https://www.skillbox.ru
+      name: Skillbox
+
+bot-settings:                       # настройки бота, скачивающего страницы с сайтов
+  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:1.0) Gecko/20100101 HeliontSearchBot/1.0  # поле GET запроса user-agent
+  referrer: http://www.google.com   # поле GET запроса referrer
+  max-page-count: 1000              # максимальное количество скачиваемых страниц сайта
+  min-delay: 300                    # минимальный период между скачиваниями с одного сайта
+
+server:
+  port: 8080                        # номер порта, на котором запускается локальный web-сервер данного приложения
+
+spring:
+  datasource:
+    username: search_engine_user      # имя пользователя базы данных (search_engine_user)
+    password: search_engine_password  # пароль пользователя базы данных (search_engine_password)
+    url: jdbc:mysql://localhost:3306/search_engine?useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true  # строка подключения к базе данных (search_engine)
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+logging:
+  file:
+    name: application.log
+  level:
+    root: info
+    searchengine: info
+
